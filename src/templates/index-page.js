@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
@@ -14,8 +15,19 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+  videos
 }) => (
   <>
+    {videos.map((node) => (
+      <a key={node.id} href={`https://www.youtube.com/watch?v=${node.videoId}`}>
+        {node.localThumbnail && (
+          <div style={{width: 500}}>
+            <Img fluid={node.localThumbnail.childImageSharp.fluid} />
+          </div>
+        )}
+        <h2>{node.title}</h2>
+      </a>
+    ))}
     <div
       className="full-width-image margin-top-0"
       style={{
@@ -127,7 +139,8 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { frontmatter } = data.markdownRemark;
+  const video = data.allYoutubeVideo.nodes;
 
   return (
     <Layout>
@@ -139,6 +152,7 @@ const IndexPage = ({ data }) => {
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
         intro={frontmatter.intro}
+        videos={video}
       />
     </Layout>
   )
@@ -189,5 +203,20 @@ export const pageQuery = graphql`
         }
       }
     }
+    allYoutubeVideo {
+      nodes {
+        id
+        videoId
+        title
+        localThumbnail {
+          childImageSharp {
+            fluid(maxWidth: 500, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
   }
+
 `

@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + Netlify CMS Starter',
@@ -57,6 +61,14 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-source-youtube-v2`,
+      options: {
+        channelId: ['UCEH9yYZu65uFf9CEB-aH7tg'],
+        apiKey: `${process.env.YOUTUBE_API_KEY}`,
+        maxVideos: 2 // Defaults to 50
       },
     },
     {
