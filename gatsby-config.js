@@ -68,7 +68,7 @@ module.exports = {
       options: {
         channelId: ['UCEH9yYZu65uFf9CEB-aH7tg'],
         apiKey: `${process.env.YOUTUBE_API_KEY}`,
-        maxVideos: 2 // Defaults to 50
+        maxVideos: 10 // Defaults to 50
       },
     },
     {
@@ -77,13 +77,6 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
-      options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ['/all.scss'], // applies purging only on the bulma css file
-      },
-    }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

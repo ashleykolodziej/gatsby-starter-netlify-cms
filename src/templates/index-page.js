@@ -2,10 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import youtubeLogo from '../img/logo-profkexplains.svg'
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
+import BlogRollHomepage from '../components/BlogRollHomepage'
+
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 export const IndexPageTemplate = ({
   image,
@@ -18,16 +22,42 @@ export const IndexPageTemplate = ({
   videos
 }) => (
   <>
-    {videos.map((node) => (
-      <a key={node.id} href={`https://www.youtube.com/watch?v=${node.videoId}`}>
-        {node.localThumbnail && (
-          <div style={{width: 500}}>
-            <Img fluid={node.localThumbnail.childImageSharp.fluid} />
-          </div>
-        )}
-        <h2>{node.title}</h2>
-      </a>
-    ))}
+    <section className="homepage-intro">
+      <h1>
+        {title}
+      </h1>
+    </section>
+    <section className="homepage-video">
+      <CarouselProvider
+        naturalSlideWidth={500}
+        naturalSlideHeight={500}
+        totalSlides={10}
+        visibleSlides={3}
+        infinite={true}
+      >
+        <div className="carousel-controls">
+          <h2>Latest Videos from <img src={youtubeLogo} alt="Professor K Explains" /></h2>
+          <ButtonBack>Back</ButtonBack>
+          <ButtonNext>Next</ButtonNext>
+        </div>
+        <Slider className="homepage-slider">
+          {videos.map((node, i) => (
+            <Slide key={node.id} index={i} innerClassName="homepage-video-slide">
+              <a key={node.id} href={`https://www.youtube.com/watch?v=${node.videoId}`}>
+                {node.localThumbnail && (
+                  <Img fluid={node.localThumbnail.childImageSharp.fluid} />
+                )}
+                <h3>{node.title}</h3>
+                <time dateTime={node.publishedAt}>Published on {new Date(node.publishedAt).toLocaleDateString('en-US')}</time>
+              </a>
+            </Slide>
+          ))}
+        </Slider>
+      </CarouselProvider>
+    </section>
+    <section className="homepage-posts">
+      <BlogRollHomepage />
+    </section>
     <div
       className="full-width-image margin-top-0"
       style={{
@@ -48,19 +78,6 @@ export const IndexPageTemplate = ({
           flexDirection: 'column',
         }}
       >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {title}
-        </h1>
         <h3
           className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
           style={{
@@ -103,17 +120,6 @@ export const IndexPageTemplate = ({
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/products">
                       See all products
-                    </Link>
-                  </div>
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
                     </Link>
                   </div>
                 </div>
@@ -208,9 +214,10 @@ export const pageQuery = graphql`
         id
         videoId
         title
+        publishedAt
         localThumbnail {
           childImageSharp {
-            fluid(maxWidth: 500, quality: 100) {
+            fluid(maxWidth: 500, maxHeight: 281, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }

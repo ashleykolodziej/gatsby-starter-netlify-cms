@@ -8,34 +8,47 @@ $bun-light: #ebfff7;
 $switch-layout: 1100px;
 
 body {
+	font-family: 'Proxima-Nova', sans-serif;
 	margin: 0;
 	padding: 0;
 }
 
 .page {
-	@media screen and (min-width: $switch-layout) {
+	/*@media screen and (min-width: $switch-layout) {
 		display: grid;
 		grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
-	}
+	}*/
 }
 
 .navbar {
 	background-color: $bun-dark;
 	font-family: 'Proxima-Nova', sans-serif;
 	padding: 1rem 2rem;
+
+	.container {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
 }
 
 .navbar-brand {
+	justify-self: start;
+	margin-right: auto;
+
 	img {
 		max-height: 4rem;
 	}
 }
 
+.navbar-menu {
+	display: flex;
+}
+
 .navbar-item {
 	color: $bun-light;
-	display: block;
 	font-size: 1.2em;
-	margin-bottom: 1em;
+	margin-right: 1em;
 }
 
 .icon {
@@ -50,5 +63,66 @@ img {
 
 main {
 	background-color: darken($bun-dark, 5%);
-	grid-column: 2 / -1;
+}
+
+.homepage-video,
+.homepage-posts {
+	color: $bun-light;
+	display: flex;
+
+	h2 {
+		img {
+			max-width: 200px;
+		}
+	}
+}
+
+.carousel {
+	display: flex;
+	width: 100%;
+}
+
+.carousel-controls {
+	padding: 3vw;
+}
+
+.homepage-slider {
+	width: 100%;
+}
+
+.homepage-video-slide {
+	box-sizing: border-box;
+	padding: 1em;
+
+	a {
+		color: $bun-light;
+		text-decoration: none;
+	}
+}
+
+h1,
+h2,
+h3 {
+	font-family: 'Proxima-Nova', sans-serif;
+}
+
+h1 {
+	color: $bun-light;
+	margin-top: 0;
+	text-align: center;
+}
+
+.blog-list-item {
+	background-color: #fff;
+	border-radius: 5px;
+	color: $bun-dark;
+	padding: 1rem;
+
+	h3 a {
+		color: inherit;
+	}
+}
+
+.featured-thumbnail {
+	width: 100%;
 }
