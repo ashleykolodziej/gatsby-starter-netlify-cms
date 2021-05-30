@@ -43,7 +43,7 @@ export const IndexPageTemplate = ({
         <Slider className="homepage-slider">
           {videos.map((node, i) => (
             <Slide key={node.id} index={i} innerClassName="homepage-video-slide">
-              <a key={node.id} href={`https://www.youtube.com/watch?v=${node.videoId}`}>
+              <a key={node.id} href={`/videos/${node.videoId}`}>
                 {node.localThumbnail && (
                   <Img fluid={node.localThumbnail.childImageSharp.fluid} />
                 )}
