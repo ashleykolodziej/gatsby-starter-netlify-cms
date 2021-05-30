@@ -5,6 +5,7 @@ date: 2021-05-28T01:42:54.417Z
 description: Test the description
 featuredpost: false
 featuredimage: /img/blog-index.jpg
+category: articles
 tags:
   - CSS
   - JavaScript
