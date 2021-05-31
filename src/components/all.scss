@@ -9,6 +9,7 @@ $switch-layout: 1100px;
 
 body {
 	font-family: 'Proxima-Nova', sans-serif;
+	line-height: 1.6;
 	margin: 0;
 	padding: 0;
 }
@@ -18,6 +19,12 @@ body {
 		display: grid;
 		grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
 	}*/
+}
+
+.content-container {
+	font-size: 1.2em;
+	max-width: 75ch;
+	margin: 0 auto;
 }
 
 .navbar {
@@ -146,4 +153,17 @@ h1 {
   left: 0;
   width: 100% !important;
   height: 100% !important;
+}
+
+.chapters-list {
+	list-style-type: none;
+	font-size: 1.3em;
+}
+
+.video-transcript {
+	background-color: #fff;
+
+	h1 {
+		color: inherit;
+	}
 }

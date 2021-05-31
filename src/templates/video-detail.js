@@ -6,6 +6,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import YouTube from 'react-youtube'
+import Chapters from '../components/Chapters'
 
 import { getCaptions, getTracks } from '@os-team/youtube-captions';
 
@@ -24,7 +25,7 @@ export const VideoPostTemplate = ({
   fetch(`http://video.google.com/timedtext?type=track&v=${videoId}&lang=en-US&fmt=json3`)
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data);
+      //console.log('Success:', data);
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -41,28 +42,21 @@ export const VideoPostTemplate = ({
     cleanDescription = `${description}`.match(findCleanDescription)
   }
 
-
   return (
-    <section className="video-detail-section">
+    <section className="video-detail">
       {helmet || ''}
       <section className="video-player">
         <YouTube videoId={videoId} containerClassName="video-responsive" />
-        <ul id="chapters">
-        {chapters && chapters.length ? (chapters.map((chapter) => (
-          <li>{chapter}</li>
-        ))) : null}
-        </ul>
+        <Chapters chapterList={chapters} />
       </section>
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{cleanDescription}</p>
-          </div>
+      <section className="video-transcript">
+        <div className="content-container">
+          <h1 className="page-title">
+            {title}
+          </h1>
+          <p>{cleanDescription}</p>
         </div>
-      </div>
+      </section>
     </section>
   )
 }
