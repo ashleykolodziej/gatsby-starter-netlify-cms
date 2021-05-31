@@ -33,20 +33,33 @@ export const VideoPostTemplate = ({
   // Chapters
   const findChapters = /(([\[])+(.)+)/g;
   const chapters = `${description}`.match(findChapters)
-  console.log( chapters );
+
+  let cleanDescription = description;
+
+  if (chapters && chapters.length) {
+    const findCleanDescription = /[\s\S]*?(?=Chapters in this video:)/g;
+    cleanDescription = `${description}`.match(findCleanDescription)
+  }
+
 
   return (
-    <section className="section">
+    <section className="video-detail-section">
       {helmet || ''}
-      <YouTube videoId={videoId} />
+      <section className="video-player">
+        <YouTube videoId={videoId} containerClassName="video-responsive" />
+        <ul id="chapters">
+        {chapters && chapters.length ? (chapters.map((chapter) => (
+          <li>{chapter}</li>
+        ))) : null}
+        </ul>
+      </section>
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
+            <p>{cleanDescription}</p>
           </div>
         </div>
       </div>

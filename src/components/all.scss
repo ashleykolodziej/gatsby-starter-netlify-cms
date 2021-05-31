@@ -126,3 +126,24 @@ h1 {
 .featured-thumbnail {
 	width: 100%;
 }
+
+.video-player {
+	color: $bun-light;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  width: 100%;
+  grid-column: span 2;
+}
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
