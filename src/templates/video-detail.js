@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
 import YouTube from 'react-youtube'
 import Chapters from '../components/Chapters'
-
-import { getCaptions, getTracks } from '@os-team/youtube-captions';
+import Captions from '../components/Captions'
 
 export const VideoPostTemplate = ({
   content,
@@ -19,30 +16,18 @@ export const VideoPostTemplate = ({
   helmet,
   videoId
 }) => {
-  const PostContent = contentComponent || Content;
   const [player, setPlayer] = useState(null);
-
-  // Captions
-  fetch(`http://video.google.com/timedtext?type=track&v=${videoId}&lang=en-US&fmt=json3`)
-    .then(response => response.json())
-    .then(data => {
-      //console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
 
   const onReady = (event) => {
     setPlayer(event.target);
   };
 
   const onSeekTo = (event) => {
-    console.log(event.currentTarget.dataset.time);
     player.seekTo(event.currentTarget.dataset.time);
   };
 
   // Chapters
-  const findChapters = /(([\[])+(.)+)/g;
+  const findChapters = /(([[])+(.)+)/g;
   const chapters = `${description}`.match(findChapters)
 
   let cleanDescription = description;
@@ -65,6 +50,7 @@ export const VideoPostTemplate = ({
             {title}
           </h1>
           <p>{cleanDescription}</p>
+          <Captions videoId={videoId} onSeekTo={onSeekTo} />
         </div>
       </section>
     </section>
@@ -86,7 +72,6 @@ const VideoPost = ({ data }) => {
     <Layout>
       <VideoPostTemplate
         content={youtubeVideo.description}
-        contentComponent={HTMLContent}
         description={youtubeVideo.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">

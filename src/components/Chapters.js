@@ -6,8 +6,6 @@ const Chapters = ({ chapterList, onSeekTo }) => {
     return;
   }
 
-  //const findTimestamp = /\[.+\]/g;
-
   return (
     <aside className="chapters">
       <ul id="chaptersList" className="chapters-list">
@@ -20,8 +18,6 @@ const Chapters = ({ chapterList, onSeekTo }) => {
             const splitTime = timeStamp.slice(1,-1).split(':');
             return (splitTime[0]*60 + parseInt(splitTime[1]));
           };
-
-          console.log(timeInSeconds(timeStamp));
 
           return <li><button type="button" data-time={timeInSeconds(timeStamp)} onClick={onSeekTo}>{timeStamp}</button>{chapterTitle}</li>
         })}
