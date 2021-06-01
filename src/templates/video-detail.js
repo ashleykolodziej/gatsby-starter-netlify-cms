@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
@@ -20,6 +20,7 @@ export const VideoPostTemplate = ({
   videoId
 }) => {
   const PostContent = contentComponent || Content;
+  const [player, setPlayer] = useState(null);
 
   // Captions
   fetch(`http://video.google.com/timedtext?type=track&v=${videoId}&lang=en-US&fmt=json3`)
@@ -30,6 +31,15 @@ export const VideoPostTemplate = ({
     .catch((error) => {
       console.error('Error:', error);
     });
+
+  const onReady = (event) => {
+    setPlayer(event.target);
+  };
+
+  const onSeekTo = (event) => {
+    console.log(event.currentTarget.dataset.time);
+    player.seekTo(event.currentTarget.dataset.time);
+  };
 
   // Chapters
   const findChapters = /(([\[])+(.)+)/g;
@@ -46,8 +56,8 @@ export const VideoPostTemplate = ({
     <section className="video-detail">
       {helmet || ''}
       <section className="video-player">
-        <YouTube videoId={videoId} containerClassName="video-responsive" />
-        <Chapters chapterList={chapters} />
+        <YouTube videoId={videoId} containerClassName="video-responsive" onReady={onReady} />
+        <Chapters chapterList={chapters} onSeekTo={onSeekTo} />
       </section>
       <section className="video-transcript">
         <div className="content-container">
