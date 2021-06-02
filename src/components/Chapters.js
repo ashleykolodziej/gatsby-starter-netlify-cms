@@ -6,6 +6,10 @@ const Chapters = ({ chapterList, onSeekTo }) => {
     return;
   }
 
+  if ( null === chapterList ) {
+    return null;
+  }
+
   return (
     <aside className="chapters">
       <ul id="chaptersList" className="chapters-list">
