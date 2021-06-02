@@ -45,7 +45,7 @@ exports.createPages = async ({ actions, graphql }) => {
       ),
       // additional data can be passed via context
       context: {
-        id,
+        id
       },
     })
   })
@@ -61,6 +61,7 @@ exports.createPages = async ({ actions, graphql }) => {
       // additional data can be passed via context
       context: {
         id,
+        videoid: video.videoId
       },
     })
   })

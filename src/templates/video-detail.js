@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import YouTube from 'react-youtube'
 import Chapters from '../components/Chapters'
-import Captions from '../components/Captions'
+import Content, { HTMLContent } from '../components/Content'
 
 export const VideoPostTemplate = ({
   content,
@@ -16,6 +17,7 @@ export const VideoPostTemplate = ({
   helmet,
   videoId
 }) => {
+  const PostContent = contentComponent || Content
   const [player, setPlayer] = useState(null);
 
   const onReady = (event) => {
@@ -50,7 +52,20 @@ export const VideoPostTemplate = ({
             {title}
           </h1>
           <p>{cleanDescription}</p>
-          <Captions videoId={videoId} onSeekTo={onSeekTo} />
+          <PostContent content={content} />
+          {tags && tags.length ? (
+            <div style={{ marginTop: `4rem` }}>
+              <h4>Tags</h4>
+              <ul className="taglist">
+                {console.log(tags)}
+                {tags.map((tag) => (
+                  <li key={tag + `tag`}>
+                    <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </section>
     </section>
@@ -67,11 +82,20 @@ VideoPostTemplate.propTypes = {
 
 const VideoPost = ({ data }) => {
   const { youtubeVideo } = data
+  const { markdownRemark: post } = data
+  let maybeContent = '',
+      maybeTags = null;
+
+  if ( null !== post ) {
+    maybeContent = post.html;
+    maybeTags = post.tags;
+  }
 
   return (
     <Layout>
       <VideoPostTemplate
-        content={youtubeVideo.description}
+        content={maybeContent}
+        contentComponent={HTMLContent}
         description={youtubeVideo.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
@@ -82,7 +106,7 @@ const VideoPost = ({ data }) => {
             />
           </Helmet>
         }
-        tags="video"
+        tags={maybeTags}
         title={youtubeVideo.title}
         videoId={youtubeVideo.videoId}
       />
@@ -93,19 +117,29 @@ const VideoPost = ({ data }) => {
 VideoPost.propTypes = {
   data: PropTypes.shape({
     youtubeVideo: PropTypes.object,
+    markdownRemark: PropTypes.object,
   }),
 }
 
 export default VideoPost
 
 export const pageQuery = graphql`
-  query VideoPostByID($id: String!) {
+  query VideoPostByID($id: String!, $videoid: String!) {
     youtubeVideo(id: { eq: $id }) {
         id
         videoId
         title
         description
         publishedAt
+    }
+    markdownRemark(frontmatter: {videoId: {eq: $videoid}}) {
+      id
+      html
+      frontmatter {
+        title
+        category
+        tags
+      }
     }
   }
 `
