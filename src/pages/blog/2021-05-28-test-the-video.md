@@ -1,6 +1,5 @@
 ---
-templateKey: blog-post
-title: Transcript for Idea Generator 1
+templateKey: video-detail
 description: Test the description
 featuredpost: false
 featuredimage: /img/blog-index.jpg
@@ -8,19 +7,19 @@ category: articles
 tags:
   - CSS
   - JavaScript
-  - html
+  - HTML
 videoId: TqdmUdi8xbY
 ---
 
-## Introduction
+### Introduction
 
-Ashley Kolodziej: Hey folks! Professor K here. So I had this really great idea to create an app that would pull from my bookmarks and it would take all my resources and it would kind of combine them together and spit out some ideas for you to try out for learning web development.
+[00:00:00] Ashley Kolodziej: Hey folks! Professor K here. So I had this really great idea to create an app that would pull from my bookmarks and it would take all my resources and it would kind of combine them together and spit out some ideas for you to try out for learning web development.
 
 [00:00:19] So this set of videos is actually going to be the process of me building that for you.
 
 [00:00:24] I want to show you, just from start to finish, literally how I would build something like this. So let's get started.
 
-## Set up a new repository in Github using a template
+### Set up a new repository in Github using a template
 
 [00:00:32] All right. So the first thing I need to do - and I have to be honest here, I did a little bit of research before this - but the first thing I would do is literally set up a GitHub repo, and I'm going to do this in my Professor K organization.
 
@@ -30,19 +29,19 @@ Ashley Kolodziej: Hey folks! Professor K here. So I had this really great idea t
 
 [00:01:33] So I'm going to create repository. When you start all projects professionally, you're always going to want to start with a GitHub repo. And so far, if you're in my class, this has been done for you using GitHub classroom, but an easy way to get started on your own is by using a template and creating the repository on your own. That's kind of what's happening in the background.
 
-## Clone the remote Github repository to your computer
+### Clone the remote Github repository to your computer
 
 [00:01:53] All right. So from here, I'm going to do a few things. I'm going to open this. It says with GitHub desktop, but for me, it's going to open it in Tower. I have Tower set up so that if I click these links, it'll open right up in there. It makes it really easy.
 
 [00:02:06] And it's going to try and clone the remote repository and I'm just going to select my GitHub account. And then this is going to clone to documents, Github, idea generator, which is exactly what I want. Alright, perfect. So I'm going to pop over back to my repositories here and at the top. I now have idea generator.
 
-## How to use Git Flow to create a feature branch
+### How to use Git Flow to create a feature branch
 
 [00:02:27] Cool. I'm going to open that up. And before I even start anything, I'm going to create a new branch. Now we haven't talked about this much up here. This is called Git Flow and it makes it really easy to create certain types of branches in a really well configured manner. So I'm going to enable Git flow. And I'm going to say that my production branch is main, my development branche is develop, and then we have feature, hotfix, and release. We're not going to worry about these too much. I'm just going to use feature for my feature branches. So let's configure that. Like I said, I really just like doing this so that I have a nice, consistent workflow.
 
 [00:03:06] So I'm going to start a feature and I want to call my feature - what do I want to call it?  I'm going to add authorization. I'm going to take a stab at actually like authorizing my call out to raindrop.io, and try to get some data in. So let's start that. Cool. Just to take a peek .  Excellent. I think we're in really good shape here.
 
-## Open the repository in VSCode and run npm install
+### Open the repository in VSCode and run npm install
 
 [00:03:32] Okay. So now that my GitHub repo is set up, what I can do is I can open this up in VSCode and in terminal. So the first thing I want to do is just make sure that I've set everything up correctly. I'm going to start with an NPM install.
 
@@ -50,7 +49,7 @@ Ashley Kolodziej: Hey folks! Professor K here. So I had this really great idea t
 
 [00:04:07] And we're back. Okay. So NPM install sometimes takes a while and that's because this particular boiler plate has a lot of dependencies. I really should go back through and look at it and like, make sure everything that's there as needed, but  my first pass at it. So it's it's okay. I'll get it figured out.
 
-## Run the npm run start command to begin building
+### Run the npm run start command to begin building
 
 [00:04:24] So what I want to do at this point is I think I want to run NPM run start. And that's the command we use to get this boilerplate going. So let's take a look and just make sure that works. It's a good time to try that and they'll take a moment to compile, but that's okay.
 
@@ -62,7 +61,7 @@ Ashley Kolodziej: Hey folks! Professor K here. So I had this really great idea t
 
 [00:05:13] Here we go. Almost done. Perfect. And look at that. We have our students site boilerplate. Excellent. So this is great news. We're making good progress here. Finally, I'm going to open up my idea generator S code just by dragging and dropping it on top. And you can see, I was kind of working out the details of this tutorial back here.
 
-## How to make an authenticated call to an API using JavaScript
+### How to make an authenticated call to an API using JavaScript
 
 [00:05:34] So you'll see that there, but for now, I'm going to really focus on just trying to get some stuff from my API, from the raindrop and logging it out to the console. In order to do that, I need to make an authenticated call out or an authorized call. We haven't talked much about authorized calls.
 
@@ -70,19 +69,19 @@ Ashley Kolodziej: Hey folks! Professor K here. So I had this really great idea t
 
 [00:06:22] So raindrop.io requires you to authenticate to get anything from the application, including your own stuff. Because I am not getting anybody else's data, I don't have to go through the full authorization process.
 
-## What is authorization in web development?
+### What is authorization in web development?
 
 [00:06:37] Now you've probably gone through an authorization process, even in Tower, right? If you use Tower and you connect to your GitHub account, you go through a screen that says, "Hey, do you want to allow Tower to access your GitHub information?"
 
 [00:06:50] And you say yes. And then you go back to Tower. That's the process of authorization at work. You're doing the exact same thing there from the user side as I'm going to be doing from the developer side.
 
-## How to decide what access your app needs to ask for
+### How to decide what access your app needs to ask for
 
 However, because I don't need to ask you for information. I only care about my data here, I've gone through and read this. And it says, if you just want to test your application or don't plan to access any data except yours, you don't need to do all of these steps. So there's actually an app management console in raindrop that lets you create a new app and get a token that way. So, obviously I don't want to give my token away to you and show you all that.
 
 [00:07:29] So I'm not going to show you that here, but the idea is that at the end, what we're going to do is make a request out to raindrop.io and then try and get some data back.
 
-## How to add authorization headers to fetch in JavaScript
+### How to add authorization headers to fetch in JavaScript
 
 Okay. So I just told you something really important. I don't want to share my token with you.
 
@@ -90,7 +89,7 @@ Okay. So I just told you something really important. I don't want to share my to
 
 [00:08:14] And this header says it's an authorization type header and it bears an OAuth token. If you want to take a look and see over here in authentication, when you make an authorized call, this is looking for this authorization, bearer, and then some access token. This isn't a real access token here, obviously in their documentation. It's just one to give you an idea of what it would look like.
 
-## How to use dotenv to store access tokens and other sensitive information in your app without committing it to your codebase
+### How to use dotenv to store access tokens and other sensitive information in your app without committing it to your codebase
 
 But like I said, I don't want to give you that data. So how do I get this token in here without actually showing you - or the whole world - on GitHub what on earth that token is? I want to keep it a secret, right? The answer is called a dot env file. E N V.
 
@@ -104,7 +103,7 @@ But like I said, I don't want to give you that data. So how do I get this token 
 
 [00:11:01] Go ahead and use the dot. That's totally fine.
 
-## How to add dotenv to your webpack config
+### How to add dotenv to your webpack config
 
 [00:11:04] This is finished installing, so that's great. What else did we need to do? Well, we needed to add this to our Webpack config. So here in config,  all of our Webpack settings are here. This is what controls how the student site boiler plate is built, and you can modify it so that you can add things to Webpack as you need them.
 
@@ -118,7 +117,7 @@ But like I said, I don't want to give you that data. So how do I get this token 
 
 [00:12:26] Waiting for it to start, waiting for it to compile.
 
-## Test that dotenv is working correctly
+### Test that dotenv is working correctly
 
 [00:12:32] All right. And we're back. And now this is compiled and loaded. And if we take a look at inspect element, there is nothing in the console. So that's good. That means that we have hopefully gotten this all set and put together nicely. So the last thing we need to do is see if we can call this variable in scripts.js and have it output correctly.
 
@@ -132,7 +131,7 @@ But like I said, I don't want to give you that data. So how do I get this token 
 
 [00:14:14] And there you go. All it did was add a line break.
 
-## Conclusion
+### Conclusion
 
 [00:14:17] All right. So I think that's a good place to pause for now. Hopefully, by the end of this tutorial, you will have seen the full process of this, but in this video we have covered so far creating a new repository and GitHub, getting that over to Tower, what Git Flow looks like, then finally using dot and Webpack to manage sensitive information such as authorization tokens in your repository.
 

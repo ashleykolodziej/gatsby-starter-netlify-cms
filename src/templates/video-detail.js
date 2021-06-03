@@ -6,7 +6,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import YouTube from 'react-youtube'
 import Chapters from '../components/Chapters'
-import Content, { HTMLContent } from '../components/Content'
+import Transcript from '../components/Transcript'
 
 export const VideoPostTemplate = ({
   content,
@@ -17,7 +17,6 @@ export const VideoPostTemplate = ({
   helmet,
   videoId
 }) => {
-  const PostContent = contentComponent || Content
   const [player, setPlayer] = useState(null);
 
   const onReady = (event) => {
@@ -25,7 +24,8 @@ export const VideoPostTemplate = ({
   };
 
   const onSeekTo = (event) => {
-    player.seekTo(event.currentTarget.dataset.time);
+    if ( event.target.type !== 'button' ) return;
+    player.seekTo(event.target.dataset.time);
   };
 
   // Chapters
@@ -42,31 +42,26 @@ export const VideoPostTemplate = ({
   return (
     <section className="video-detail">
       {helmet || ''}
+      <header className="video-teaser content-container">
+        <h1 className="page-title">
+          {title}
+        </h1>
+        <p>{cleanDescription}</p>
+        <ul className="taglist">
+          {tags.map((tag) => (
+            <li key={tag + `tag`}>
+              <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+            </li>
+          ))}
+        </ul>
+      </header>
       <section className="video-player">
         <YouTube videoId={videoId} containerClassName="video-responsive" onReady={onReady} />
-        <Chapters chapterList={chapters} onSeekTo={onSeekTo} />
-      </section>
-      <section className="video-transcript">
-        <div className="content-container">
-          <h1 className="page-title">
-            {title}
-          </h1>
-          <p>{cleanDescription}</p>
-          <PostContent content={content} />
-          {tags && tags.length ? (
-            <div style={{ marginTop: `4rem` }}>
-              <h4>Tags</h4>
-              <ul className="taglist">
-                {console.log(tags)}
-                {tags.map((tag) => (
-                  <li key={tag + `tag`}>
-                    <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-        </div>
+        {content && content.length ? (
+          <Transcript content={content} onSeekTo={onSeekTo} />
+        ) : 
+          <Chapters chapterList={chapters} onSeekTo={onSeekTo} />
+        }
       </section>
     </section>
   )
@@ -84,22 +79,29 @@ const VideoPost = ({ data }) => {
   const { youtubeVideo } = data
   const { markdownRemark: post } = data
   let maybeContent = '',
-      maybeTags = null;
+      maybeTags = ['Video'],
+      maybeTitle = youtubeVideo.title;
 
   if ( null !== post ) {
     maybeContent = post.html;
-    maybeTags = post.tags;
+
+    if ( null !== post.frontmatter.tags ) {
+      maybeTags = post.frontmatter.tags;
+    }
+
+    if ( '' !== post.frontmatter.title ) {
+      maybeTitle = post.frontmatter.title;
+    }
   }
 
   return (
     <Layout>
       <VideoPostTemplate
         content={maybeContent}
-        contentComponent={HTMLContent}
         description={youtubeVideo.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
-            <title>{`${youtubeVideo.title}`}</title>
+            <title>{`${maybeTitle}`}</title>
             <meta
               name="description"
               content={`${youtubeVideo.description}`}
@@ -107,7 +109,7 @@ const VideoPost = ({ data }) => {
           </Helmet>
         }
         tags={maybeTags}
-        title={youtubeVideo.title}
+        title={maybeTitle}
         videoId={youtubeVideo.videoId}
       />
     </Layout>
