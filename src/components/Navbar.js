@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/Final-Logo-Long@2x.png'
+import MainNav from '../components/MainNav'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -59,23 +60,7 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/tags/html/">
-                HTML
-              </Link>
-              <Link className="navbar-item" to="/tags/css/">
-                CSS
-              </Link>
-              <Link className="navbar-item" to="/tags/javascript/">
-                JavaScript
-              </Link>
-              <Link className="navbar-item" to="/tags/graphic-design/">
-                Graphic Design
-              </Link>
-              <Link className="navbar-item" to="/tags/web-design/">
-                Web Design
-              </Link>
-            </div>
+            <MainNav />
             <div className="navbar-end has-text-centered">
               <a
                 className="navbar-item"

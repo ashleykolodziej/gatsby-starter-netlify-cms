@@ -58,6 +58,11 @@ body {
 	margin-right: 1em;
 }
 
+.navbar-start {
+	list-style-type: none;
+	display: flex;
+}
+
 .icon {
 	display: inline-block;
 	max-width: 1.5em;
@@ -210,4 +215,31 @@ h1 {
   position: absolute;
   white-space: nowrap; 
   width: 1px;
+}
+
+.footer {
+	background-color: $bun-dark;
+	display: flex;
+	padding: 3rem;
+}
+
+.footer-social {
+	margin-left: auto;
+}
+
+.footer-social-list {
+	list-style-type: none;
+	display: flex;
+	gap: 30px;
+
+	a {
+		display: block;
+		padding: 0.75em;
+		background-color: $bun-light;
+		border-radius: 5px;
+	}
+
+	img {
+		width: 1.5em;
+	}
 }
