@@ -23,7 +23,7 @@ export const IndexPageTemplate = ({
 }) => (
   <>
     <section className="homepage-intro">
-      <h1>
+      <h1 className="visually-hidden">
         {title}
       </h1>
     </section>
@@ -58,7 +58,7 @@ export const IndexPageTemplate = ({
     <section className="homepage-posts">
       <BlogRollHomepage />
     </section>
-    <div
+    {/*<div
       className="full-width-image margin-top-0"
       style={{
         backgroundImage: `url(${
@@ -72,7 +72,7 @@ export const IndexPageTemplate = ({
         <h3>{main.heading}</h3>
         <p>{main.description}</p>
       </div>
-    </div>
+    </div>*/}
   </>
 )
 
