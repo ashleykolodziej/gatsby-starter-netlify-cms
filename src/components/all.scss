@@ -1,5 +1,3 @@
-@import "default";
-
 @import url("https://use.typekit.net/ymw5gnd.css");
 
 $bun-dark: #161f35;
@@ -177,13 +175,13 @@ h1 {
 	}
 }
 
+.page-title {
+	font-size: 2vw;
+	padding: 4vw 4vw 1vw;
+}
+
 .video-teaser {
 	color: $bun-light;
-	padding: 4vw;
-	
-	h1 {
-		font-size: 2vw;
-	}
 }
 
 .chapters {
@@ -259,4 +257,11 @@ h1 {
 			max-width: 140%;
 		}
 	}
+}
+
+.tagged-posts {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px;
+	list-style-type: none;
 }

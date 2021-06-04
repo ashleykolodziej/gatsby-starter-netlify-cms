@@ -27,7 +27,7 @@ class BlogRollHomepage extends React.Component {
         <Slider className="homepage-slider">
           {posts &&
           posts.map(({ node: post }, i) => (
-            <Slide index={i} innerClassName="homepage-video-slide">
+            <Slide index={i} key={post.id} innerClassName="homepage-video-slide">
               <article
                 className={`blog-list-item tile is-child box notification ${
                   post.frontmatter.featuredpost ? 'is-featured' : ''

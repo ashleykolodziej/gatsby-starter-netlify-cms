@@ -128,7 +128,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allYoutubeVideo {
+    allYoutubeVideo(limit: 10) {
       nodes {
         id
         videoId
