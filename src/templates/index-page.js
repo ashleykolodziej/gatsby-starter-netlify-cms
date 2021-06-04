@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import youtubeLogo from '../img/logo-profkexplains.svg'
 
 import Layout from '../components/Layout'
-import Features from '../components/Features'
 import BlogRollHomepage from '../components/BlogRollHomepage'
+import VideoListItem from '../components/VideoListItem'
 
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -43,13 +42,7 @@ export const IndexPageTemplate = ({
         <Slider className="homepage-slider">
           {videos.map((node, i) => (
             <Slide key={node.id} index={i} innerClassName="homepage-video-slide">
-              <a key={node.id} href={`/videos/${node.videoId}`}>
-                {node.localThumbnail && (
-                  <Img fluid={node.localThumbnail.childImageSharp.fluid} />
-                )}
-                <h3>{node.title}</h3>
-                <time dateTime={node.publishedAt}>Published on {new Date(node.publishedAt).toLocaleDateString('en-US')}</time>
-              </a>
+              <VideoListItem data={node} />
             </Slide>
           ))}
         </Slider>
