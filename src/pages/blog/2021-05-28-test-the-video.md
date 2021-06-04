@@ -78,13 +78,13 @@ videoId: TqdmUdi8xbY
 
 ### How to decide what access your app needs to ask for
 
-However, because I don't need to ask you for information. I only care about my data here, I've gone through and read this. And it says, if you just want to test your application or don't plan to access any data except yours, you don't need to do all of these steps. So there's actually an app management console in raindrop that lets you create a new app and get a token that way. So, obviously I don't want to give my token away to you and show you all that.
+[00:07:02] However, because I don't need to ask you for information. I only care about my data here, I've gone through and read this. And it says, if you just want to test your application or don't plan to access any data except yours, you don't need to do all of these steps. So there's actually an app management console in raindrop that lets you create a new app and get a token that way. So, obviously I don't want to give my token away to you and show you all that.
 
 [00:07:29] So I'm not going to show you that here, but the idea is that at the end, what we're going to do is make a request out to raindrop.io and then try and get some data back.
 
 ### How to add authorization headers to fetch in JavaScript
 
-Okay. So I just told you something really important. I don't want to share my token with you.
+[00:07:43] Okay. So I just told you something really important. I don't want to share my token with you.
 
 [00:07:48] So here, my code says, fetch some URL, and then this is new here. This object that comes after the fetch in the URL. These are some options that you can give to that fetch command. To, say, give it extra information when initializes. So here, one way that you can say that you've authorized with the application is to send what's called a header.
 
@@ -92,7 +92,7 @@ Okay. So I just told you something really important. I don't want to share my to
 
 ### How to use dotenv to store access tokens and other sensitive information in your app without committing it to your codebase
 
-But like I said, I don't want to give you that data. So how do I get this token in here without actually showing you - or the whole world - on GitHub what on earth that token is? I want to keep it a secret, right? The answer is called a dot env file. E N V.
+[00:08:40] But like I said, I don't want to give you that data. So how do I get this token in here without actually showing you - or the whole world - on GitHub what on earth that token is? I want to keep it a secret, right? The answer is called a dot env file. E N V.
 
 [00:09:00] This file actually allows you to store really sensitive information like that. And what happens is that when you compile everything - and especially with Webpack, it goes really nicely with Webpack - it will process all of this stuff together so that nobody ever actually sees your token. But you can still make the calls out to the API and not showing anybody like your secrets.
 

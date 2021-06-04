@@ -243,3 +243,20 @@ h1 {
 		width: 1.5em;
 	}
 }
+
+.single-post {
+	background-color: #fff;
+}
+
+.article-content {
+	padding: 2em;
+	max-width: 65ch;
+	margin: 0 auto;
+
+	img {
+		@media screen and (min-width: 1045px) {
+			margin: 3em -20%;
+			max-width: 140%;
+		}
+	}
+}
