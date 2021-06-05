@@ -12,6 +12,7 @@ tags:
   - static site generator
   - hugo
   - cms
+videoId: null
 ---
 
 I’ve been writing in Markdown for a few months now, and it’s been amazing. I mean, anything that enables my Sublime Text habit is going to make me pretty happy, but I know me, and at heart I’m a designer. If you give me the ability to design, I will design. Markdown prevents me from doing that so I actually write.

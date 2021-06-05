@@ -11,6 +11,7 @@ tags:
   - JavaScript
   - Adobe Illustrator
   - Animation
+videoId: null  
 ---
 
 **Fact:** SVG letters will never look like real handwriting.

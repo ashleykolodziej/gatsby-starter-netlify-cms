@@ -3,6 +3,7 @@ templateKey: video-detail
 title: Idea Generator Tutorial Part 1 - Set up Github and Install Dotenv
 description: Test the description
 featuredpost: false
+featuredimage: /img/ashley-kolodziej-avatar.jpg
 category: video
 tags:
   - CSS

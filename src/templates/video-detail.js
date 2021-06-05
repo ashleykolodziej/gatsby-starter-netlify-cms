@@ -78,6 +78,11 @@ VideoPostTemplate.propTypes = {
 const VideoPost = ({ data }) => {
   const { youtubeVideo } = data
   const { markdownRemark: post } = data
+
+  if ( null === youtubeVideo ) {
+    return null;
+  }
+
   let maybeContent = '',
       maybeTags = ['Video'],
       maybeTitle = youtubeVideo.title;
@@ -126,7 +131,7 @@ VideoPost.propTypes = {
 export default VideoPost
 
 export const pageQuery = graphql`
-  query VideoPostByID($id: String!, $videoid: String!) {
+  query VideoPostByID($id: String!, $videoid: String) {
     youtubeVideo(id: { eq: $id }) {
         id
         videoId

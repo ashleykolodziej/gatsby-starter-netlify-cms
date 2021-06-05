@@ -13,6 +13,7 @@ tags:
   - WordPress
   - Gutenberg
   - tutorial
+videoId: null
 ---
 
 I’ve been learning Gutenberg block development lately, and one of the things I was struggling with was trying to figure out what parameters I could pass on to blocks defined in block variations. I was looking all over the place for documentation on the parameters each block takes, such as font size and color. Little did I know I had all the documentation I needed right in front of me, in the form of the WordPress code editor.
