@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
@@ -29,7 +28,7 @@ export const BlogPostTemplate = ({
             <ul className="taglist">
               {tags.map((tag) => (
                 <li key={tag + `tag`}>
-                  <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                  <Link to={`/tags/${tag.replace(/\s+/g, '-').toLowerCase()}/`}>{tag}</Link>
                 </li>
               ))}
             </ul>

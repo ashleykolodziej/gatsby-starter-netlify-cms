@@ -79,7 +79,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   // Make tag pages
   tags.forEach((tag) => {
-    const tagPath = `/tags/${_.kebabCase(tag)}/`
+    const tagPath = `/tags/${tag.replace(/\s+/g, '-').toLowerCase()}/`
 
     createPage({
       path: tagPath,
