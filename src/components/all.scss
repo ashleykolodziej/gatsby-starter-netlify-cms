@@ -110,6 +110,26 @@ main {
 	}
 }
 
+.homepage-about {
+	color: #fff;
+	display: flex;
+	gap: 30px;
+	justify-content: center;
+	font-size: 1.3em;
+	padding: 4em 0;
+
+	.gatsby-image-wrapper {
+		align-self: center;
+		border-radius: 50%;
+		max-width: 300px;
+		width: 100%;
+	}
+}
+
+.homepage-about-content {
+	max-width: 65ch;
+}
+
 h1,
 h2,
 h3,

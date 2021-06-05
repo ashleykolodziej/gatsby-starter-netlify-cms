@@ -15,7 +15,7 @@ class BlogRollHomepage extends React.Component {
         naturalSlideWidth={500}
         naturalSlideHeight={900}
         totalSlides={posts.length}
-        visibleSlides={7}
+        visibleSlides={5}
         infinite={true}
         isIntrinsicHeight={true}
       >

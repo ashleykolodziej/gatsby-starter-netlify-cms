@@ -6,6 +6,7 @@ import youtubeLogo from '../img/logo-profkexplains.svg'
 import Layout from '../components/Layout'
 import BlogRollHomepage from '../components/BlogRollHomepage'
 import VideoListItem from '../components/VideoListItem'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -51,21 +52,13 @@ export const IndexPageTemplate = ({
     <section className="homepage-posts">
       <BlogRollHomepage />
     </section>
-    {/*<div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
-      }}
-    >
-      <div>
+    <section className="homepage-about">
+      <PreviewCompatibleImage imageInfo={main.profileimage} />
+      <div className="homepage-about-content">
         <h3>{main.heading}</h3>
         <p>{main.description}</p>
       </div>
-    </div>*/}
+    </section>
   </>
 )
 
@@ -125,6 +118,16 @@ export const pageQuery = graphql`
         main {
           heading
           description
+          profileimage {
+            alt,
+            image {
+              childImageSharp {
+                fluid(maxWidth: 300, maxHeight: 300, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
         }
       }
     }
