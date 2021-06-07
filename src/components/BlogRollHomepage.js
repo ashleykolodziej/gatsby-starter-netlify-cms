@@ -21,8 +21,10 @@ class BlogRollHomepage extends React.Component {
       >
         <div className="carousel-controls">
           <h2>Latest posts</h2>
-          <ButtonBack className="button">Back</ButtonBack>
-          <ButtonNext className="button">Next</ButtonNext>
+          <div className="button-container">
+            <ButtonBack className="button">Back</ButtonBack>
+            <ButtonNext className="button">Next</ButtonNext>
+          </div>
         </div>
         <Slider className="homepage-slider">
           {posts &&

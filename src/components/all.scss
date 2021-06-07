@@ -131,8 +131,13 @@ main {
 }
 
 .carousel-controls {
-	padding: 3vw;
-	min-width: 200px;
+	text-align: center;
+	padding: 3vw 2vw;
+	min-width: 250px;
+
+	img {
+		margin: 2em auto 3em;
+	}
 }
 
 .homepage-slider {
@@ -566,9 +571,15 @@ $gutenberg-gradient: linear-gradient(to right, $bun-purple, $bun-red-gradient);
 	&:hover {
 		cursor: pointer;
 	}
+}
 
-	& + & {
-		float: right;
+.button-container {
+	justify-content: center;
+	display: flex;
+	gap: 20px;
+
+	.button {
+		font-size: 1.1em;
 	}
 }
 

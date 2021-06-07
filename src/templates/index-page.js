@@ -36,9 +36,14 @@ export const IndexPageTemplate = ({
         infinite={true}
       >
         <div className="carousel-controls">
-          <h2>Latest Videos from <img src={youtubeLogo} alt="Professor K Explains" /></h2>
-          <ButtonBack className="button">Back</ButtonBack>
-          <ButtonNext className="button">Next</ButtonNext>
+          <h2>Latest videos from</h2>
+          <a href="https://www.youtube.com/c/ProfessorKExplains">
+            <img src={youtubeLogo} alt="Professor K Explains" />
+          </a>
+          <div className="button-container">
+            <ButtonBack className="button">Back</ButtonBack>
+            <ButtonNext className="button">Next</ButtonNext>
+          </div>
         </div>
         <Slider className="homepage-slider">
           {videos.map((node, i) => (
