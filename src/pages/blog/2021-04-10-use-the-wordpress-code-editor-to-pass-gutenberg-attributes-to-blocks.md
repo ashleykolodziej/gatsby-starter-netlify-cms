@@ -1,15 +1,21 @@
 ---
 templateKey: blog-post
-title: Test the blog
-date: 2021-05-28T01:42:54.417Z
-description: Test the description
+title: >-
+  Tip: use the WordPress code editor to pass attributes to your Gutenberg block variations 
+date: 2021-04-10T01:42:54.417Z
 featuredpost: false
-featuredimage: /img/blog-index.jpg
+featuredimage: /img/andrew-neel-cckf4TsHAuw-unsplash.jpg
+category: article
 tags:
   - CSS
   - JavaScript
-  - html
+  - HTML
+  - WordPress
+  - Gutenberg
+  - Tutorial
+videoId: null
 ---
+
 I’ve been learning Gutenberg block development lately, and one of the things I was struggling with was trying to figure out what parameters I could pass on to blocks defined in block variations. I was looking all over the place for documentation on the parameters each block takes, such as font size and color. Little did I know I had all the documentation I needed right in front of me, in the form of the WordPress code editor.
 
 ## Wait, what’s a variation?
@@ -37,3 +43,5 @@ Block variations are a low key way to get into Gutenberg block development and g
 ## Full tutorial 
 
 If you’re new to JavaScript or Gutenberg, I recorded my full process of building block variations using this method in a beginner-friendly way here.  I also put together sample code below in Github you can use to get started with a new block variation.
+
+Photo by [Andrew Neel](https://unsplash.com/@andrewtneel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/job-reference?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
