@@ -1,10 +1,7 @@
 import React from 'react'
 
 import MainNav from '../components/MainNav'
-import facebook from '../img/social/facebook.svg'
-import instagram from '../img/social/instagram.svg'
-import twitter from '../img/social/twitter.svg'
-import vimeo from '../img/social/vimeo.svg'
+import { SocialIcon } from 'react-social-icons';
 
 const Footer = class extends React.Component {
   render() {
@@ -16,24 +13,13 @@ const Footer = class extends React.Component {
         <nav className="footer-social">
           <ul className="footer-social-list">
             <li>
-              <a title="facebook" href="https://facebook.com">
-                <img src={facebook} alt="Facebook" />
-              </a>
+              <SocialIcon url="https://www.youtube.com/c/ProfessorKExplains" fgColor="#fff" />
             </li>
             <li>
-              <a title="twitter" href="https://twitter.com">
-                <img className="fas fa-lg" src={twitter} alt="Twitter" />
-              </a>
+              <SocialIcon url="https://twitter.com/ashleykolodziej" fgColor="#fff" />
             </li>
             <li>
-              <a title="instagram" href="https://instagram.com">
-                <img src={instagram} alt="Instagram" />
-              </a>
-            </li>
-            <li>
-              <a title="vimeo" href="https://vimeo.com">
-                <img src={vimeo} alt="Vimeo" />
-              </a>
+              <SocialIcon url="https://www.linkedin.com/in/ashleykolodziej/" fgColor="#fff" />
             </li>
           </ul>
         </nav>

@@ -12,7 +12,7 @@ tags:
   - HTML
   - WordPress
   - Gutenberg
-  - tutorial
+  - Tutorial
 videoId: null
 ---
 

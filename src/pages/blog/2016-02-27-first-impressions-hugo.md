@@ -9,9 +9,9 @@ description: >-
   What I've learned from switching to a static site generator from WordPress for my personal website
 category: article
 tags:
-  - static site generator
-  - hugo
-  - cms
+  - Static Site Generator
+  - Hugo
+  - CMS
 videoId: null
 ---
 

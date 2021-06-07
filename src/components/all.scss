@@ -36,12 +36,17 @@ body {
 .navbar {
 	background-color: $bun-dark;
 	font-family: 'Proxima-Nova', sans-serif;
-	padding: 1rem 2rem;
+	padding: 0.5rem 1rem;
+
+	@media screen and (min-width: 600px) {
+		padding: 1rem 2rem;
+	}
 
 	.container {
 		align-items: center;
 		display: flex;
 		justify-content: center;
+		gap: 20px;
 	}
 }
 
@@ -50,7 +55,16 @@ body {
 	margin-right: auto;
 
 	img {
-		max-height: 4rem;
+		max-height: 3rem;
+		min-width: 200px;
+
+		@media screen and (min-width: 600px) {
+			max-height: 3.5rem;
+		}
+
+		@media screen and (min-width: 900px) {
+			max-height: 4rem;
+		}
 	}
 }
 
@@ -60,13 +74,19 @@ body {
 
 .navbar-item {
 	color: $bun-light;
-	font-size: 1.2em;
-	margin-right: 1em;
+	font-size: 0.9em;
+	margin-right: 0.25em;
+
+	@media screen and (min-width: 600px) {
+		font-size: 1.2em;
+	}
 }
 
 .navbar-start {
 	list-style-type: none;
 	display: flex;
+	padding: 0;
+	margin-left: auto;
 }
 
 .icon {
@@ -204,7 +224,7 @@ h1 {
 }
 
 .page-title {
-	font-size: 2vw;
+	font-size: clamp(1.5rem, 2vw, 4rem);
 	padding: 4vw 4vw 1vw;
 }
 
@@ -260,9 +280,6 @@ h1 {
 
 	a {
 		display: block;
-		padding: 0.75em;
-		background-color: $bun-light;
-		border-radius: 5px;
 	}
 
 	img {
@@ -315,21 +332,23 @@ h1 {
 	color: $bun-light;
 	width: 100%;
 	text-align: center;
-	margin-bottom: 3em;
+	margin-bottom: 4vw;
 }
 
 .tags-list {
-	align-items: center;
-	justify-content: center;
-	display: flex;
-	list-style-type: none;
+	flex-wrap: wrap;
+	padding: 0;
 
 	&::before {
-		content: '{';
+		@media screen and (min-width: 650px) {
+			content: '{';
+		}
 	}
 
 	&::after {
-		content: '}';
+		@media screen and (min-width: 650px) {
+			content: '}';
+		}
 	}
 
 	&::before,
@@ -341,6 +360,28 @@ h1 {
 		top: -3px;
 	}
 
+	a {
+		padding: 0.5em 1em;
+		border-radius: 50px;
+		font-size: 13px;
+		font-weight: 700;
+	}
+}
+
+$html-gradient: linear-gradient(to right, $bun-green, $bun-yellow);
+$css-gradient: linear-gradient(to right, $bun-yellow, $bun-red-gradient);
+$javascript-gradient: linear-gradient(to right, $bun-green, $bun-blue);
+$tutorial-gradient: linear-gradient(to right, $bun-blue, $bun-purple);
+$design-gradient: linear-gradient(to right, $bun-yellow, $bun-red-gradient);
+$gutenberg-gradient: linear-gradient(to right, $bun-purple, $bun-red-gradient);
+
+.nav-list,
+.tags-list {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	list-style-type: none;
+
 	li {
 		margin: 0.25em 0.5em;
 	}
@@ -348,36 +389,114 @@ h1 {
 	a {
 		background-color: $bun-red-gradient;
 		color: darken($bun-darker, 5%);
-		font-weight: 700;
 		text-decoration: none;
-		padding: 0.5em 1em;
-		border-radius: 50px;
-		font-size: 13px;
 	}
 
 	.tag-html {
-		background: linear-gradient(to right, $bun-green, $bun-yellow);
+		background-image: $html-gradient;
 	}
 
 	.tag-css {
-		background: linear-gradient(to right, $bun-yellow, $bun-red-gradient);
+		background-image: $css-gradient;
 	}
 
 	.tag-javascript {
-		background: linear-gradient(to right, $bun-green, $bun-blue);
+		background-image: $javascript-gradient;
 	}
 
 	.tag-tutorial {
-		background: linear-gradient(to right, $bun-blue, $bun-purple);
+		background-image: $tutorial-gradient;
 	}
 
 	.tag-wordpress,
 	.tag-web-design {
-		background: linear-gradient(to right, $bun-yellow, $bun-red-gradient);
+		background-image: $design-gradient;
 	}
 
 	.tag-gutenberg,
 	.tag-graphic-design {
-		background: linear-gradient(to right, $bun-purple, $bun-red-gradient);
+		background-image: $gutenberg-gradient;
+	}
+}
+
+.nav-list {
+	.navbar-item {
+		background: none;
+		color: $bun-light;
+		display: block;
+		line-height: 1.2;
+
+		&:hover {
+			transition: transform .3s ease;
+			transform: translateY(-2px);
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 1px;
+		}
+
+		&:hover::after {
+			transition: transform .3s ease;
+			transform: scaleY(5) translateY(1px);
+			transform-origin: top;
+		}
+	}
+
+	.tag-html {
+		&::after {
+			background-image: $html-gradient;
+		}
+	}
+
+	.tag-css {
+		&::after {
+			background-image: $css-gradient;
+		}
+	}
+
+	.tag-javascript {
+		&::after {
+			background-image: $javascript-gradient;
+		}
+	}
+
+	.tag-tutorial {
+		&::after {
+			background-image: $tutorial-gradient;
+		}
+	}
+
+	.tag-wordpress,
+	.tag-web-design {
+		&::after {
+			background-image: $design-gradient;
+		}
+	}
+
+	.tag-gutenberg,
+	.tag-graphic-design {
+		&::after {
+			background-image: $gutenberg-gradient;
+		}
+	}
+}
+
+.article-content {
+	h2 {
+		&::after {
+			content: '';
+			display: block;
+			width: 50px;
+			height: 5px;
+			background: linear-gradient(to right, $bun-red, $bun-yellow);
+			margin: 1em 0;
+		}
+
+		&:nth-of-type(even)::after {
+			background: linear-gradient(to right, $bun-green, $bun-blue, $bun-purple);
+		}
 	}
 }
