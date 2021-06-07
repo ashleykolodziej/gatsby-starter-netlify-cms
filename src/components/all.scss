@@ -335,6 +335,10 @@ h1 {
 	list-style-type: none;
 	padding: 0;
 
+	li {
+		max-width: 500px;
+	}
+
 	a {
 		display: block;
 		color: $bun-light;

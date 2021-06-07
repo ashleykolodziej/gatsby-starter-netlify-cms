@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import VideoListItem from '../components/VideoListItem'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 class TagRoute extends React.Component {
   render() {
@@ -18,6 +19,14 @@ class TagRoute extends React.Component {
         return(
           <li key={post.node.fields.slug}>
             <Link to={post.node.fields.slug}>
+              {post.node.frontmatter.featuredimage &&
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: post.node.frontmatter.featuredimage,
+                    alt: `featured image thumbnail for post ${post.node.frontmatter.title}`,
+                  }}
+                />     
+              }
               <h2 className="is-size-2">{post.node.frontmatter.title}</h2>
             </Link>
           </li>
@@ -70,6 +79,13 @@ export const tagPageQuery = graphql`
             title
             description
             videoId
+            featuredimage {
+              childImageSharp {
+                fluid(maxWidth: 500, maxHeight: 281, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
