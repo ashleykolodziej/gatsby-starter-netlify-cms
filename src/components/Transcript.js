@@ -20,7 +20,7 @@ const Transcript = ({ content, onSeekTo }) => {
           return (splitTime[0]*60*60 + splitTime[1]*60 + parseInt(splitTime[2]));
         };
 
-        paragraph.innerHTML = `<button type="button" data-time=${timeInSeconds(timeStamp)}>${timeStamp}</button>${cleanedText}</p>`;
+        paragraph.innerHTML = `<button type="button" class="button" data-time=${timeInSeconds(timeStamp)}>${timeStamp}</button>${cleanedText}</p>`;
     }
 
     let uselessDiv = document.createElement('div');

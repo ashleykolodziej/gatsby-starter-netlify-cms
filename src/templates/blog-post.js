@@ -21,7 +21,6 @@ export const BlogPostTemplate = ({
       <article className="single-post">
         <div className="banner">
           <h1 className="page-title">{title}</h1>
-          <p>{description}</p>
           {tags && tags.length ? (
             <div className="tags-container">
               <h4 className="visually-hidden">Tagged:</h4>
@@ -34,6 +33,7 @@ export const BlogPostTemplate = ({
               </ul>
             </div>
           ) : null}
+          <p>{description}</p>
         </div>
         <PostContent content={content} className="article-content" />
       </article>

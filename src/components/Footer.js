@@ -7,9 +7,9 @@ const Footer = class extends React.Component {
   render() {
     return (
       <footer className="footer">
-        <nav className="footer-menu">
+        {/*<nav className="footer-menu">
           <MainNav />
-        </nav>
+        </nav>*/}
         <nav className="footer-social">
           <ul className="footer-social-list">
             <li>

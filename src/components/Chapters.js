@@ -23,7 +23,7 @@ const Chapters = ({ chapterList, onSeekTo }) => {
             return (splitTime[0]*60 + parseInt(splitTime[1]));
           };
 
-          return <li><button type="button" data-time={timeInSeconds(timeStamp)} onClick={onSeekTo}>{timeStamp}</button>{chapterTitle}</li>
+          return <li><button type="button" class="button" data-time={timeInSeconds(timeStamp)} onClick={onSeekTo}>{timeStamp}</button>{chapterTitle}</li>
         })}
       </ul>
     </aside>

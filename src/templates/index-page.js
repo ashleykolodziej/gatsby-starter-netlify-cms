@@ -37,8 +37,8 @@ export const IndexPageTemplate = ({
       >
         <div className="carousel-controls">
           <h2>Latest Videos from <img src={youtubeLogo} alt="Professor K Explains" /></h2>
-          <ButtonBack>Back</ButtonBack>
-          <ButtonNext>Next</ButtonNext>
+          <ButtonBack className="button">Back</ButtonBack>
+          <ButtonNext className="button">Next</ButtonNext>
         </div>
         <Slider className="homepage-slider">
           {videos.map((node, i) => (

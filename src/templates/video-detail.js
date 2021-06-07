@@ -45,14 +45,14 @@ export const VideoPostTemplate = ({
         <h1 className="page-title">
           {title}
         </h1>
-        <p>{cleanDescription}</p>
-        <ul className="taglist">
+        <ul className="tags-list">
           {tags.map((tag) => (
             <li key={tag + `tag`}>
-              <Link to={`/tags/${tag.replace(/\s+/g, '-').toLowerCase()}/`}>{tag}</Link>
+              <Link to={`/tags/${tag.replace(/\s+/g, '-').toLowerCase()}/`} className={`tag-${tag.replace(/\s+/g, '-').toLowerCase()}`}>{tag}</Link>
             </li>
           ))}
         </ul>
+        <p>{cleanDescription}</p>
       </header>
       <section className="video-player">
         <YouTube videoId={videoId} containerClassName="video-responsive" onReady={onReady} />

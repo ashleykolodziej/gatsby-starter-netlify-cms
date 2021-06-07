@@ -15,14 +15,14 @@ class BlogRollHomepage extends React.Component {
         naturalSlideWidth={500}
         naturalSlideHeight={900}
         totalSlides={posts.length}
-        visibleSlides={5}
+        visibleSlides={3}
         infinite={true}
         isIntrinsicHeight={true}
       >
         <div className="carousel-controls">
           <h2>Latest posts</h2>
-          <ButtonBack>Back</ButtonBack>
-          <ButtonNext>Next</ButtonNext>
+          <ButtonBack className="button">Back</ButtonBack>
+          <ButtonNext className="button">Next</ButtonNext>
         </div>
         <Slider className="homepage-slider">
           {posts &&
@@ -52,10 +52,9 @@ class BlogRollHomepage extends React.Component {
                         {post.frontmatter.title}
                     </Link>
                   </h3>
-                  <p className="post-meta">
-                    <span> &bull; </span>
+                  <p className="post-meta visually-hidden">
                     <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
+                      Published on {post.frontmatter.date}
                     </span>
                   </p>
                 </header>
@@ -92,7 +91,7 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
+              excerpt(pruneLength: 200)
               id
               fields {
                 slug
@@ -104,7 +103,7 @@ export default () => (
                 featuredpost
                 featuredimage {
                   childImageSharp {
-                    fluid(maxWidth: 300, quality: 100) {
+                    fluid(maxWidth: 450, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }

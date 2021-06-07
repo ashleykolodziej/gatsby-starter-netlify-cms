@@ -36,9 +36,9 @@ class TagRoute extends React.Component {
         <section className="section">
           <h1 className="page-title">{tagHeader}</h1>
           <ul className="tagged-posts">{postLinks}</ul>
-          <p>
-            <Link to="/tags/">Browse all tags</Link>
-          </p>
+          <div style={{textAlign: 'center'}}>
+            <Link to="/tags/" className="button-primary">Browse all tags</Link>
+          </div>
           <Helmet title={`${tag} | ${title}`} />
         </section>
       </Layout>
