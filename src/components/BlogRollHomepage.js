@@ -103,7 +103,7 @@ export default () => (
                 featuredpost
                 featuredimage {
                   childImageSharp {
-                    fluid(maxWidth: 450, quality: 100) {
+                    fluid(maxWidth: 500, maxHeight: 281, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }

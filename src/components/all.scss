@@ -199,6 +199,8 @@ h1 {
 	border-radius: 5px;
 	color: $bun-dark;
 	padding: 1rem;
+	height: 100%;
+	box-sizing: border-box;
 
 	h3 a {
 		color: inherit;
