@@ -1,7 +1,15 @@
 @import url("https://use.typekit.net/ymw5gnd.css");
 
 $bun-dark: #161f35;
+$bun-darker: darken($bun-dark, 5%);
 $bun-light: #ebfff7;
+
+$bun-red: #fe2d2e;
+$bun-red-gradient: #f85a5a;
+$bun-blue: #50b2de;
+$bun-purple: #aa5bf5;
+$bun-green: #64dd22;
+$bun-yellow: #ffd604;
 
 $switch-layout: 1100px;
 
@@ -72,7 +80,7 @@ img {
 }
 
 main {
-	background-color: darken($bun-dark, 5%);
+	background-color: $bun-darker;
 }
 
 .homepage-video,
@@ -284,4 +292,92 @@ h1 {
 	grid-template-columns: repeat(4, 1fr);
 	gap: 30px;
 	list-style-type: none;
+}
+
+.banner {
+	background-color: $bun-darker;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	h1,
+	p {
+		max-width: 35ch;
+	}
+
+	h1 {
+		margin-bottom: 0;
+	}
+}
+
+.tags-container {
+	color: $bun-light;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 3em;
+}
+
+.tags-list {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	list-style-type: none;
+
+	&::before {
+		content: '{';
+	}
+
+	&::after {
+		content: '}';
+	}
+
+	&::before,
+	&::after {
+		font-size: 3em;
+		opacity: 0.25;
+		margin: -1em 0.25em;
+		position: relative;
+		top: -3px;
+	}
+
+	li {
+		margin: 0.25em 0.5em;
+	}
+
+	a {
+		background-color: $bun-red-gradient;
+		color: darken($bun-darker, 5%);
+		font-weight: 700;
+		text-decoration: none;
+		padding: 0.5em 1em;
+		border-radius: 50px;
+		font-size: 13px;
+	}
+
+	.tag-html {
+		background: linear-gradient(to right, $bun-green, $bun-yellow);
+	}
+
+	.tag-css {
+		background: linear-gradient(to right, $bun-yellow, $bun-red-gradient);
+	}
+
+	.tag-javascript {
+		background: linear-gradient(to right, $bun-green, $bun-blue);
+	}
+
+	.tag-tutorial {
+		background: linear-gradient(to right, $bun-blue, $bun-purple);
+	}
+
+	.tag-wordpress,
+	.tag-web-design {
+		background: linear-gradient(to right, $bun-yellow, $bun-red-gradient);
+	}
+
+	.tag-gutenberg,
+	.tag-graphic-design {
+		background: linear-gradient(to right, $bun-purple, $bun-red-gradient);
+	}
 }

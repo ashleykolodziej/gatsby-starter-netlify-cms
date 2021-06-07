@@ -19,21 +19,23 @@ export const BlogPostTemplate = ({
     <section className="section">
       {helmet || ''}
       <article className="single-post">
-        <h1 className="page-title">{title}</h1>
-        <p>{description}</p>
+        <div className="banner">
+          <h1 className="page-title">{title}</h1>
+          <p>{description}</p>
+          {tags && tags.length ? (
+            <div className="tags-container">
+              <h4 className="visually-hidden">Tagged:</h4>
+              <ul className="tags-list">
+                {tags.map((tag) => (
+                  <li key={tag + `tag`}>
+                    <Link to={`/tags/${tag.replace(/\s+/g, '-').toLowerCase()}/`} className={`tag-${tag.replace(/\s+/g, '-').toLowerCase()}`}>{tag}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
         <PostContent content={content} className="article-content" />
-        {tags && tags.length ? (
-          <div>
-            <h4>Tags</h4>
-            <ul className="taglist">
-              {tags.map((tag) => (
-                <li key={tag + `tag`}>
-                  <Link to={`/tags/${tag.replace(/\s+/g, '-').toLowerCase()}/`}>{tag}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
       </article>
     </section>
   )
